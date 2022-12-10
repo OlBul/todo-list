@@ -1,8 +1,24 @@
 import React from 'react'
+import ListGroup from 'react-bootstrap/ListGroup'
+import { useSelector } from 'react-redux'
+import Note from '../components/Note'
 
-const Archive = () => {
+const Archive = ({  setShow, alertMessage, show, setAlertMessage, id, text, setText, commpleted }) => {
+  const todos = useSelector(state => state.todos.todos)
+  
+   
   return (
-    <div>Archive</div>
+    <ListGroup variant="flush" className="notes">
+    {
+        todos.map((todo) => (
+          <Note
+                        key={todo.id}                      
+                        {...todo}
+                    />
+        )) 
+     
+    }
+</ListGroup>
   )
 }
 

@@ -8,8 +8,7 @@ const AlertMassedge = ({ show, setShow, alertMessage }) => {
             <Alert
                 variant={
                     alertMessage.message === 'Enter text for note!'
-                        ? 'warning'
-                        : 'success'
+                        ? 'warning' : alertMessage.message ==='Note added!' ?  'success':'danger'
                 }
                 onClose={() => setShow(false)}
                 dismissible

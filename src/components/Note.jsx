@@ -1,15 +1,29 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup'
+import { useDispatch } from 'react-redux'
+import { toggleTodoComplete, removeTodo } from '../redux/todoSlice'
 
-const Note = ({ toggleTodoComplete, removeTodo, id, text, commpleted }) => {
+const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
+    const dispatch = useDispatch()
+    const removeTask = () => {
+        text={text}
+        setShow(() => ({ show: true }))
+        dispatch(removeTodo({id}))      
+        setAlertMessage((prevState) => ({
+            ...prevState,
+            message: 'Note deleted!',
+        }))
+    } 
+    
     return (
+        
         <>
             <ListGroup.Item className="list-group-item note">
                 <input
                     type="checkbox"
                     checked={commpleted}
-                    onChange={() => toggleTodoComplete(id)}
+                    onChange={() => dispatch(toggleTodoComplete({ id }))}
                 />
                 <strong className="todo-text">{text}</strong>
                 <small className="todo-date">
@@ -17,7 +31,7 @@ const Note = ({ toggleTodoComplete, removeTodo, id, text, commpleted }) => {
                 </small>
                 <Button
                     variant="outline-danger btn-sm"
-                    onClick={() => removeTodo(id)}
+                    onClick={removeTask}
                 >
                     &times;
                 </Button>{' '}
