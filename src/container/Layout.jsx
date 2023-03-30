@@ -1,13 +1,15 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Footer from './Footer'
-import NavBar from './NavBar'
+import Footer from '../container/footer/Footer'
+import NavBar from '../components/navBar/NavBar'
+import Header from '../container/header/Header'
 
 const Layout = () => {
     return (
         <>
             <div className="wrapper">
-                <NavBar />
+                {/* <NavBar /> */}
+                <Header />
                 <main className="main">
                     <Outlet />
                 </main>

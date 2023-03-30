@@ -1,10 +1,7 @@
 import { Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 
-
-const FormNote = ({ text, setText,  addTask }) => {
-
-    
+const FormNote = ({ text, setText, addTask }) => {
     const handleChange = (e) => setText(e.target.value)
     return (
         <>

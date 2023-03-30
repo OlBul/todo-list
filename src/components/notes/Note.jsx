@@ -1,23 +1,32 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { toggleTodoComplete, removeTodo } from '../redux/todoSlice'
+//import { addTodoArchive } from '../../redux/archiveTodoSlice'
+import {
+    toggleTodoComplete,
+    removeTodo,
+    addTodoArchive,
+    addTodo,
+} from '../../redux/todoSlice'
 
 const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
+    const todoText = useSelector((state) => state.todos.todos.text)
     const dispatch = useDispatch()
+
     const removeTask = () => {
-        text={text}
+        //  text = { text }
         setShow(() => ({ show: true }))
-        dispatch(removeTodo({id}))      
+        dispatch(removeTodo({ id }))
+        // dispatch(addTodoArchive({ id }))
         setAlertMessage((prevState) => ({
             ...prevState,
             message: 'Note deleted!',
         }))
-    } 
-    
+    }
+
     return (
-        
         <>
             <ListGroup.Item className="list-group-item note">
                 <input
@@ -29,10 +38,7 @@ const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
                 <small className="todo-date">
                     {new Date().toLocaleDateString()}
                 </small>
-                <Button
-                    variant="outline-danger btn-sm"
-                    onClick={removeTask}
-                >
+                <Button variant="outline-danger btn-sm" onClick={removeTask}>
                     &times;
                 </Button>{' '}
             </ListGroup.Item>
