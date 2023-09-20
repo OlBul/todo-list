@@ -31,19 +31,19 @@ const todoSlice = createSlice({
             state.todos = state.todos.filter(
                 (todo) => todo.id !== action.payload.id
             )
-            /*   state.archiveTodo.push({
+            /* state.archiveTodo.push({
                 id: state.id,
                 text: state.text,
                 completed: false,
             }) */
         },
-        addTodoArchive(state, action) {
+        /* addTodoArchive(state, action) {
             state.archiveTodo.push({
                 id: state.todos.id,
                 text: state.todos.text,
                 completed: false,
             })
-        },
+        }, */
         toggleTodoComplete(state, action) {
             const toggleTodo = state.todos.find(
                 (todo) => todo.id === action.payload.id

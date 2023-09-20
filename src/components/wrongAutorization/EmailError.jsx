@@ -10,7 +10,7 @@ const EmailError = () => {
             <div className={styles.form}>
                 <h2 className={styles.title}>EmailError </h2>
                 <p className={styles.title}>Try again or register!</p>
-                <Link className={styles.button} to="/">
+                <Link className={styles.button} to="/input">
                     Sign In
                 </Link>
                 <Link className={styles.register} to="/register">

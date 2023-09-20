@@ -5,14 +5,17 @@ const formSlice = createSlice({
     initialState: {
         signIn: true,
         signUp: false,
+        closeForm: false,
     },
     reducers: {
         openSignIn: (state) => {
             state.signIn = !state.signIn
+            state.closeForm = !state.closeForm
         },
         openSignUp: (state) => {
             state.signUp = !state.signUp
             state.signIn = !state.signIn
+            state.closeForm = !state.closeForm
         },
     },
 })

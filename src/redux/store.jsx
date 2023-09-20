@@ -1,6 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import todoReducer from './todoSlice'
-import archiveTodosReducer from './archiveTodoSlice'
 import formReducer from './formSlice'
 import userReducer from './userSlice'
 import {
@@ -17,7 +16,6 @@ import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
     todos: todoReducer,
-    archiveTodos: archiveTodosReducer,
     form: formReducer,
     user: userReducer,
 })

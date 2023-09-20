@@ -1,22 +1,16 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup'
-import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-//import { addTodoArchive } from '../../redux/archiveTodoSlice'
 import {
     toggleTodoComplete,
-    removeTodo,
-    addTodoArchive,
-    addTodo,
+    removeTodo,  
 } from '../../redux/todoSlice'
 
 const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
-    const todoText = useSelector((state) => state.todos.todos.text)
     const dispatch = useDispatch()
 
     const removeTask = () => {
-        //  text = { text }
         setShow(() => ({ show: true }))
         dispatch(removeTodo({ id }))
         // dispatch(addTodoArchive({ id }))

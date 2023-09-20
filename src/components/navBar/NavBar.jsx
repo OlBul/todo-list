@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -9,15 +8,13 @@ import { openSignIn, openSignUp } from '../../redux/formSlice'
 import { removeUser } from '../../redux/userSlice'
 import styles from './NavBar.module.scss'
 import useAuth from '../../hooks/use-auth'
-//import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
     const dispatch = useDispatch()
-    //const navigate = useNavigate()
     const { isAuth } = useAuth()
 
     const deleteUser = () => {
-        !isAuth && dispatch(openSignIn())
+        /* !isAuth && dispatch(openSignIn()) */
         dispatch(removeUser())
     }
 
@@ -25,8 +22,9 @@ const NavBar = () => {
         <Navbar bg="dark" variant="dark" className={styles.navbar}>
             <Container>
                 <Navbar.Brand href="#home">Note App</Navbar.Brand>
-                <Nav className="me-auto ms-auto">
-                    <NavLink to="/home" className="nav-link">
+                {!isAuth ? (
+                    <Nav className="ms-auto">
+                        {/* <NavLink to="/home" className="nav-link">
                         Home
                     </NavLink>
                     <NavLink to="/about" className="nav-link">
@@ -34,9 +32,43 @@ const NavBar = () => {
                     </NavLink>
                     <NavLink to="/archive" className="nav-link">
                         Archive
-                    </NavLink>
-                </Nav>
-                <div className="buttons">
+                    </NavLink> */}
+                        <Link
+                            to="/register"
+                            onClick={() => dispatch(openSignUp())}
+                            bg="dark"
+                            variant="dark"
+                            className="nav-link"
+                        >
+                            Sign Up
+                        </Link>
+                        <Link
+                            to="/input"
+                            onClick={() => dispatch(openSignIn())}
+                            bg="dark"
+                            variant="dark"
+                            className="nav-link"
+                        >
+                            Sign In
+                        </Link>
+                    </Nav>
+                ) : (
+                    <Nav className="ms-auto">
+                        <NavLink
+                            to="/"
+                            bg="dark"
+                            variant="dark"
+                            className="nav-link"
+                            //onClick={deleteUser}
+                            //onClick={() => dispatch(openSignIn())}
+                            onClick={() => dispatch(removeUser())}
+                        >
+                            {/* {isAuth ? 'Sign out' : 'Sign In'} */}
+                            Sign out
+                        </NavLink>
+                    </Nav>
+                )}
+                {/* <div className="buttons">
                     <Link
                         to="/register"
                         onClick={() => dispatch(openSignUp())}
@@ -47,7 +79,7 @@ const NavBar = () => {
                         Sign Up
                     </Link>
                     <Link
-                        to="/"
+                        to="/input"
                         onClick={() => dispatch(openSignIn())}
                         bg="dark"
                         variant="dark"
@@ -66,7 +98,7 @@ const NavBar = () => {
                     >
                         {isAuth ? 'Sign out' : 'Sign In'}
                     </Link>
-                </div>
+                </div> */}
             </Container>
         </Navbar>
     )
