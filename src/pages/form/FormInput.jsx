@@ -18,7 +18,9 @@ const FormInput = () => {
                     })
                 )
             })
-            .catch(console.error)
+            .catch((error) => {
+                alert('Wrong password or email address!!!')
+            })
     }
     return <FormI title="Sign In" handleClick={handleInput} />
 }

@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Form } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { openSignUp, openSignIn } from '../../redux/formSlice'
 import styles from './Form.module.scss'
 
-const FormI = ({ title, handleClick }) => {
+const FormI = ({ title, handleClick, setEr }) => {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [emailDirty, setEmailDirty] = useState(false)
@@ -20,7 +20,7 @@ const FormI = ({ title, handleClick }) => {
         } else {
             setFormValid(true)
         }
-    }, [emailError, passError])
+    }, [emailError, passError, setEr])
 
     const emailHandler = (e) => {
         setEmail(e.target.value)
@@ -90,6 +90,7 @@ const FormI = ({ title, handleClick }) => {
                             </Form.Label>
                             {emailDirty && emailError && (
                                 <div
+                                    className="warning"
                                     style={{
                                         color: 'red',
                                         paddingBottom: '5px',
@@ -117,6 +118,7 @@ const FormI = ({ title, handleClick }) => {
                             </Form.Label>
                             {passError && passDirty && (
                                 <div
+                                    className="warning"
                                     style={{
                                         color: 'red',
                                         paddingBottom: '5px',

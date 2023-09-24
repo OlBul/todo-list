@@ -23,8 +23,9 @@ const FormRegistration = () => {
                 )
             })
             .catch((error) => {
-                const errorCode = error.code
-                const errorMessage = error.message
+                alert(
+                    'Email exists! Please use a different email address or register!'
+                )
             })
     }
 
@@ -33,7 +34,11 @@ const FormRegistration = () => {
             {er ? (
                 <WrongAutorization />
             ) : (
-                <FormI title="Sign Up" handleClick={handleRegister} />
+                <FormI
+                    title="Sign Up"
+                    handleClick={handleRegister}
+                    setEr={setEr}
+                />
             )}
             {/* <FormI title="Sign Up" handleClick={handleRegister} /> */}
         </div>
