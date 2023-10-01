@@ -24,33 +24,54 @@ const todoSlice = createSlice({
                 .then((res) => {
                     return res.data
                 })
-            //localStorage.setItem('todo', JSON.stringify(state.todos))
         },
 
         removeTodo(state, action) {
+            state.todos.pop({
+                id: new Date().toISOString(),
+                text: action.payload.text,
+                completed: false,
+            })
+
+            axios
+                .delete(
+                    `https://63ef3bc24d5eb64db0c568de.mockapi.io/todos/:id`,
+                    action.payload
+                )
+                .then((res) => {
+                    return res.data
+                })
+                .catch((err) => {
+                    console.log(console.log(err))
+                })
+            //localStorage.setItem('todo', JSON.stringify(state.todos))
+        },
+    },
+
+    /* removeTodo(state, action) {
             state.todos = state.todos.filter(
                 (todo) => todo.id !== action.payload.id
-            )
-            /* state.archiveTodo.push({
+            ) */
+    /* state.archiveTodo.push({
                 id: state.id,
                 text: state.text,
                 completed: false,
-            }) */
-        },
-        /* addTodoArchive(state, action) {
+            }) 
+        },*/
+    /* addTodoArchive(state, action) {
             state.archiveTodo.push({
                 id: state.todos.id,
                 text: state.todos.text,
                 completed: false,
             })
         }, */
-        toggleTodoComplete(state, action) {
+    /*  toggleTodoComplete(state, action) {
             const toggleTodo = state.todos.find(
                 (todo) => todo.id === action.payload.id
             )
             toggleTodo.completed = !toggleTodo.completed
-        },
-    },
+        }, */
+    /*  }, */
 })
 
 export const { addTodo, removeTodo, addTodoArchive, toggleTodoComplete } =

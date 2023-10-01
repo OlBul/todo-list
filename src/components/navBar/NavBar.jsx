@@ -24,15 +24,6 @@ const NavBar = () => {
                 <Navbar.Brand href="#home">Note App</Navbar.Brand>
                 {!isAuth ? (
                     <Nav className="ms-auto">
-                        {/* <NavLink to="/home" className="nav-link">
-                        Home
-                    </NavLink>
-                    <NavLink to="/about" className="nav-link">
-                        Getting Started
-                    </NavLink>
-                    <NavLink to="/archive" className="nav-link">
-                        Archive
-                    </NavLink> */}
                         <Link
                             to="/register"
                             onClick={() => dispatch(openSignUp())}
@@ -59,46 +50,12 @@ const NavBar = () => {
                             bg="dark"
                             variant="dark"
                             className="nav-link"
-                            //onClick={deleteUser}
-                            //onClick={() => dispatch(openSignIn())}
                             onClick={() => dispatch(removeUser())}
                         >
-                            {/* {isAuth ? 'Sign out' : 'Sign In'} */}
                             Sign out
                         </NavLink>
                     </Nav>
                 )}
-                {/* <div className="buttons">
-                    <Link
-                        to="/register"
-                        onClick={() => dispatch(openSignUp())}
-                        bg="dark"
-                        variant="dark"
-                        className={styles.button}
-                    >
-                        Sign Up
-                    </Link>
-                    <Link
-                        to="/input"
-                        onClick={() => dispatch(openSignIn())}
-                        bg="dark"
-                        variant="dark"
-                        className={styles.button}
-                    >
-                        Sign In
-                    </Link>
-                    <Link
-                        to="/"
-                        bg="dark"
-                        variant="dark"
-                        className={styles.button}
-                        onClick={deleteUser}
-                        //onClick={() => dispatch(openSignIn())}
-                        //onClick={() => dispatch(removeUser())}
-                    >
-                        {isAuth ? 'Sign out' : 'Sign In'}
-                    </Link>
-                </div> */}
             </Container>
         </Navbar>
     )

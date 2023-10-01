@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import FormI from './Form'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { setUser } from '../../redux/userSlice'
 
-import WrongAutorization from '../../components/wrongAutorization/WrongAutorization'
-
 const FormRegistration = () => {
-    const [er, setEr] = useState(false)
     const dispatch = useDispatch()
 
     const handleRegister = (email, password) => {
@@ -31,16 +27,7 @@ const FormRegistration = () => {
 
     return (
         <div>
-            {er ? (
-                <WrongAutorization />
-            ) : (
-                <FormI
-                    title="Sign Up"
-                    handleClick={handleRegister}
-                    setEr={setEr}
-                />
-            )}
-            {/* <FormI title="Sign Up" handleClick={handleRegister} /> */}
+            <FormI title="Sign Up" handleClick={handleRegister} />
         </div>
     )
 }
