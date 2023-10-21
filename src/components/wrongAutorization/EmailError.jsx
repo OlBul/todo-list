@@ -1,10 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import useAuth from '../../hooks/use-auth'
 import styles from './../../pages/form/Form.module.scss'
 
 const EmailError = () => {
-    //const { isAuph, email, password } = useAuth()
     return (
         <div className={styles.registration}>
             <div className={styles.form}>

@@ -2,10 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { useDispatch } from 'react-redux'
-import {
-    toggleTodoComplete,
-    removeTodo,  
-} from '../../redux/todoSlice'
+import { toggleTodoComplete, removeTodo } from '../../redux/todoSlice'
 
 const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
     const dispatch = useDispatch()
@@ -13,7 +10,6 @@ const Note = ({ setShow, setAlertMessage, id, text, commpleted }) => {
     const removeTask = () => {
         setShow(() => ({ show: true }))
         dispatch(removeTodo({ id }))
-        // dispatch(addTodoArchive({ id }))
         setAlertMessage((prevState) => ({
             ...prevState,
             message: 'Note deleted!',

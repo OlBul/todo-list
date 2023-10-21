@@ -13,11 +13,6 @@ const NavBar = () => {
     const dispatch = useDispatch()
     const { isAuth } = useAuth()
 
-    const deleteUser = () => {
-        /* !isAuth && dispatch(openSignIn()) */
-        dispatch(removeUser())
-    }
-
     return (
         <Navbar bg="dark" variant="dark" className={styles.navbar}>
             <Container>

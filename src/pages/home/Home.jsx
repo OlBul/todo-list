@@ -5,9 +5,6 @@ import AlertMassedge from '../../components/alert/AlertMassedge'
 import FormNote from '../../components/form/FormNote'
 import Notes from '../../components/notes/Notes'
 import { addTodo } from '../../redux/todoSlice'
-import useAuth from '../../hooks/use-auth'
-import WrongAutorization from '../../components/wrongAutorization/WrongAutorization'
-import { useSelector } from 'react-redux'
 
 const Home = () => {
     const [text, setText] = useState('')
@@ -15,10 +12,6 @@ const Home = () => {
     const [alertMessage, setAlertMessage] = useState({
         message: '',
     })
-
-    const closeForm = useSelector((state) => state.closeForm)
-
-    const { isAuth } = useAuth()
 
     const dispatch = useDispatch()
 
@@ -58,29 +51,6 @@ const Home = () => {
                 />
                 <Notes setShow={setShow} setAlertMessage={setAlertMessage} />
             </Container>{' '}
-            {/*  {closeForm ? (
-                <Container className="main">
-                    <AlertMassedge
-                        show={show}
-                        setShow={setShow}
-                        alertMessage={alertMessage}
-                    />
-                    <FormNote
-                        show={show}
-                        setShow={setShow}
-                        setAlertMessage={setAlertMessage}
-                        text={text}
-                        setText={setText}
-                        addTask={addTask}
-                    />
-                    <Notes
-                        setShow={setShow}
-                        setAlertMessage={setAlertMessage}
-                    />
-                </Container>
-            ) : (
-                <WrongAutorization />
-            )} */}
         </>
     )
 }

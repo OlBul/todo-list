@@ -69,3 +69,12 @@ input:checked + strong {
 a {
     text-decoration: none;
 }
+
+@media (max-width: 575px) {
+    .form {
+        flex-direction: column;
+    }
+    .form-button {
+        align-self: flex-end;
+    }
+}

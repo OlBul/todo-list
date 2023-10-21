@@ -12,7 +12,11 @@ const FormNote = ({ text, setText, addTask }) => {
                     onChange={handleChange}
                     placeholder="Your note"
                 />
-                <Button variant="outline-secondary" onClick={addTask}>
+                <Button
+                    className="form-button"
+                    variant="outline-secondary"
+                    onClick={addTask}
+                >
                     Submit
                 </Button>
             </Form>

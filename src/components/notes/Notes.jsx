@@ -2,14 +2,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { useSelector } from 'react-redux'
 import Note from './Note'
 
-const Notes = ({
-    setShow,
-    alertMessage,
-    show,
-    setAlertMessage,
-    removeTask,
-    text,
-}) => {
+const Notes = ({ setShow, setAlertMessage }) => {
     const todos = useSelector((state) => state.todos.todos)
 
     return (
